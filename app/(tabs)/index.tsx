@@ -1,29 +1,34 @@
 import React from 'react';
-import { Image, ScrollView, Text, TextInput, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
+
+
+type CatProps = {
+  name: string;
+};
+
+const Name = (props: CatProps) => {
+  return (
+    <View>
+    <Text>Hello, I am {props.name}!</Text>
+  </View>
+  )
+}
 
 const App = () => {
   return (
-    <ScrollView>
-      <Text>Some text</Text>
+    <>
       <View>
-        <Text>Some more text</Text>
-        <Image
-          source={{
-            uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
-          }}
-          style={{width: 200, height: 200}}
-        />
+        <Name name='david'/>
+        <Name name='rosie'/>
       </View>
-      <TextInput
-        style={{
-          height: 40,
-          borderColor: 'gray',
-          borderWidth: 1,
-        }}
-        defaultValue="You can type in me"
+      <Image 
+        source={{
+        uri: 'https://reactnative.dev/docs/assets/p_cat1.png'
+      }}
+      style={{width: 200, height: 200}}
       />
-    </ScrollView>
+    </>
   );
 };
 
-export default App;
+export default App
