@@ -1,34 +1,33 @@
-import React from 'react';
-import { Image, Text, View } from 'react-native';
-
-
-type CatProps = {
-  name: string;
-};
-
-const Name = (props: CatProps) => {
-  return (
-    <View>
-    <Text>Hello, I am {props.name}!</Text>
-  </View>
-  )
-}
+import React, { FlatList, StyleSheet, Text, View } from 'react-native';
 
 const App = () => {
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      paddingTop: 22,
+    },
+    item: {
+      padding: 10,
+      fontSize:18,
+      height: 44
+    }
+  })
+
   return (
-    <>
-      <View>
-        <Name name='david'/>
-        <Name name='rosie'/>
-      </View>
-      <Image 
-        source={{
-        uri: 'https://reactnative.dev/docs/assets/p_cat1.png'
-      }}
-      style={{width: 200, height: 200}}
+    <View style={styles.container}>
+      <FlatList
+        data={[
+          {key: 'name1'},
+          {key: 'name2'},
+          {key: 'name3'}
+        ]}
+        renderItem={({item}) => <Text 
+        style={styles.item}>
+        {item.key}
+        </Text>}
       />
-    </>
-  );
-};
+    </View>
+  )
+}
 
 export default App
